@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+<rect width="100%" height="100%" fill="#fffdf8"/>
+<text x="450.0" y="32" text-anchor="middle" font-size="24" font-family="Georgia">Baseline Overfitting Check</text>
+<line x1="80" y1="60" x2="80" y2="400" stroke="#222" stroke-width="2"/>
+<line x1="80" y1="400" x2="860" y2="400" stroke="#222" stroke-width="2"/>
+<text x="450.0" y="490" text-anchor="middle" font-size="18" font-family="Georgia">Epoch</text>
+<text x="24" y="260.0" text-anchor="middle" font-size="18" font-family="Georgia" transform="rotate(-90 24 260.0)">Loss</text>
+<line x1="80" y1="400.0" x2="860" y2="400.0" stroke="#d8d0c2" stroke-width="1"/>
+<text x="68" y="405.0" text-anchor="end" font-size="14" font-family="monospace">0.052</text>
+<line x1="80" y1="315.0" x2="860" y2="315.0" stroke="#d8d0c2" stroke-width="1"/>
+<text x="68" y="320.0" text-anchor="end" font-size="14" font-family="monospace">0.060</text>
+<line x1="80" y1="229.99999999999997" x2="860" y2="229.99999999999997" stroke="#d8d0c2" stroke-width="1"/>
+<text x="68" y="234.99999999999997" text-anchor="end" font-size="14" font-family="monospace">0.068</text>
+<line x1="80" y1="145.0" x2="860" y2="145.0" stroke="#d8d0c2" stroke-width="1"/>
+<text x="68" y="150.0" text-anchor="end" font-size="14" font-family="monospace">0.077</text>
+<line x1="80" y1="60.0" x2="860" y2="60.0" stroke="#d8d0c2" stroke-width="1"/>
+<text x="68" y="65.0" text-anchor="end" font-size="14" font-family="monospace">0.085</text>
+<polyline fill="none" stroke="#355c7d" stroke-width="3" points="80.00,60.00 860.00,323.67"/>
+<polyline fill="none" stroke="#c06c84" stroke-width="3" points="80.00,236.39 860.00,400.00"/>
+<rect x="80" y="426" width="22" height="8" fill="#355c7d"/>
+<text x="112" y="440" font-size="16" font-family="Georgia">train loss</text>
+<rect x="300" y="426" width="22" height="8" fill="#c06c84"/>
+<text x="332" y="440" font-size="16" font-family="Georgia">validation loss</text>
+</svg>

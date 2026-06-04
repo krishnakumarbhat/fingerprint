@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+<rect width="100%" height="100%" fill="#fffdf8"/>
+<text x="600.0" y="32" text-anchor="middle" font-size="24" font-family="Georgia">Final Grid Test EER</text>
+<line x1="80" y1="60" x2="80" y2="400" stroke="#222" stroke-width="2"/>
+<line x1="80" y1="400" x2="1160" y2="400" stroke="#222" stroke-width="2"/>
+<text x="24" y="310.0" text-anchor="middle" font-size="18" font-family="Georgia" transform="rotate(-90 24 310.0)">Equal Error Rate</text>
+<rect x="92.00" y="383.33" width="84.00" height="16.67" fill="#355c7d" rx="6"/>
+<text x="134.00" y="373.33" text-anchor="middle" font-size="12" font-family="monospace">0.001</text>
+<text x="134.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 134.00 420.00)">raw:compact_siamese</text>
+<rect x="200.00" y="363.50" width="84.00" height="36.50" fill="#c06c84" rx="6"/>
+<text x="242.00" y="353.50" text-anchor="middle" font-size="12" font-family="monospace">0.003</text>
+<text x="242.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 242.00 420.00)">normalized:compact_siamese</text>
+<rect x="308.00" y="329.70" width="84.00" height="70.30" fill="#f67280" rx="6"/>
+<text x="350.00" y="319.70" text-anchor="middle" font-size="12" font-family="monospace">0.006</text>
+<text x="350.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 350.00 420.00)">segmented:compact_siamese</text>
+<rect x="416.00" y="300.84" width="84.00" height="99.16" fill="#6c5b7b" rx="6"/>
+<text x="458.00" y="290.84" text-anchor="middle" font-size="12" font-family="monospace">0.009</text>
+<text x="458.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 458.00 420.00)">gabor:compact_siamese</text>
+<rect x="524.00" y="287.34" width="84.00" height="112.66" fill="#f8b195" rx="6"/>
+<text x="566.00" y="277.34" text-anchor="middle" font-size="12" font-family="monospace">0.010</text>
+<text x="566.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 566.00 420.00)">raw:mobile_triplet</text>
+<rect x="632.00" y="282.34" width="84.00" height="117.66" fill="#355c7d" rx="6"/>
+<text x="674.00" y="272.34" text-anchor="middle" font-size="12" font-family="monospace">0.010</text>
+<text x="674.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 674.00 420.00)">segmented:mobile_triplet</text>
+<rect x="740.00" y="268.80" width="84.00" height="131.20" fill="#c06c84" rx="6"/>
+<text x="782.00" y="258.80" text-anchor="middle" font-size="12" font-family="monospace">0.011</text>
+<text x="782.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 782.00 420.00)">skeleton:compact_siamese</text>
+<rect x="848.00" y="260.09" width="84.00" height="139.91" fill="#f67280" rx="6"/>
+<text x="890.00" y="250.09" text-anchor="middle" font-size="12" font-family="monospace">0.012</text>
+<text x="890.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 890.00 420.00)">normalized:mobile_triplet</text>
+<rect x="956.00" y="223.26" width="84.00" height="176.74" fill="#6c5b7b" rx="6"/>
+<text x="998.00" y="213.26" text-anchor="middle" font-size="12" font-family="monospace">0.015</text>
+<text x="998.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 998.00 420.00)">gabor:mobile_triplet</text>
+<rect x="1064.00" y="90.91" width="84.00" height="309.09" fill="#f8b195" rx="6"/>
+<text x="1106.00" y="80.91" text-anchor="middle" font-size="12" font-family="monospace">0.027</text>
+<text x="1106.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 1106.00 420.00)">skeleton:mobile_triplet</text>
+</svg>

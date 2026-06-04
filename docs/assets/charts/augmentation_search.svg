@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<rect width="100%" height="100%" fill="#fffdf8"/>
+<text x="500.0" y="32" text-anchor="middle" font-size="24" font-family="Georgia">Augmentation Search Validation EER</text>
+<line x1="80" y1="60" x2="80" y2="400" stroke="#222" stroke-width="2"/>
+<line x1="80" y1="400" x2="960" y2="400" stroke="#222" stroke-width="2"/>
+<text x="24" y="310.0" text-anchor="middle" font-size="18" font-family="Georgia" transform="rotate(-90 24 310.0)">Validation EER</text>
+<rect x="92.00" y="312.43" width="152.00" height="87.57" fill="#355c7d" rx="6"/>
+<text x="168.00" y="302.43" text-anchor="middle" font-size="12" font-family="monospace">0.012</text>
+<text x="168.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 168.00 420.00)">compact_siamese__gabor__none__lr1em03__bs48__m0p75</text>
+<rect x="268.00" y="172.49" width="152.00" height="227.51" fill="#c06c84" rx="6"/>
+<text x="344.00" y="162.49" text-anchor="middle" font-size="12" font-family="monospace">0.031</text>
+<text x="344.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 344.00 420.00)">compact_siamese__gabor__rotate__lr1em03__bs48__m0p75</text>
+<rect x="444.00" y="296.22" width="152.00" height="103.78" fill="#f67280" rx="6"/>
+<text x="520.00" y="286.22" text-anchor="middle" font-size="12" font-family="monospace">0.014</text>
+<text x="520.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 520.00 420.00)">compact_siamese__gabor__elastic__lr1em03__bs48__m0p75</text>
+<rect x="620.00" y="304.08" width="152.00" height="95.92" fill="#6c5b7b" rx="6"/>
+<text x="696.00" y="294.08" text-anchor="middle" font-size="12" font-family="monospace">0.013</text>
+<text x="696.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 696.00 420.00)">compact_siamese__gabor__obliterate__lr1em03__bs48__m0p75</text>
+<rect x="796.00" y="90.91" width="152.00" height="309.09" fill="#f8b195" rx="6"/>
+<text x="872.00" y="80.91" text-anchor="middle" font-size="12" font-family="monospace">0.042</text>
+<text x="872.00" y="420.00" text-anchor="end" font-size="12" font-family="monospace" transform="rotate(-50 872.00 420.00)">compact_siamese__gabor__combined__lr1em03__bs48__m0p75</text>
+</svg>

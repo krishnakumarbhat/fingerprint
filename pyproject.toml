@@ -1,0 +1,27 @@
+# AGENT INSTRUCTION:
+# Keep runtime dependencies limited to the core fingerprint stack used here.
+# If you change imports, update this file and keep the test configuration in sync.
+
+[project]
+name = "fingerprint-verification-socofing"
+version = "0.1.0"
+description = "SOCOFing fingerprint verification benchmark with classical enhancement and metric learning."
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26",
+  "torch>=2.5",
+  "torchvision>=0.20",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "C4"]
+ignore = []
