@@ -12,7 +12,7 @@ The goal was to turn the downloaded SOCOFing dataset into a verification project
 - benchmark all requested augmentation families,
 - compare two different deep metric-learning models across all five feature pipelines,
 - evaluate every final combination with biometric metrics,
-- produce visual assets that make every phase explainable during an interview.
+- produce visual assets that make every phase explainable .
 
 ## Phase 1: Dataset Split and Baseline
 
@@ -191,9 +191,9 @@ The tests cover:
 - verification metrics,
 - a miniature real-data training run.
 
-## What To Say in an Interview
+## What happen 
 
-If someone asks why the raw pipeline won even though the project implemented advanced enhancement, the honest answer is:
+the raw pipeline won even though the project implemented advanced enhancement, because:
 
 - the classical enhancement chain was implemented correctly,
 - it improved interpretability of the ridge structure,
