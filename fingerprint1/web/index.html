@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fingerprint Verification System — Demo</title>
+  <meta name="description" content="Interactive demo of a fingerprint biometric verification pipeline using deep metric learning on the SOCOFing dataset." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ── NAV ── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="brand-icon">🔍</span>
+        <span>FingerprintVerify</span>
+      </div>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#flowmap">Flow Map</a>
+        <a href="#demo">Demo</a>
+        <a href="#results">Results</a>
+        <a href="#explainer">Explainer</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="overview">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">SOCOFing Dataset · 55,270 Records</div>
+      <h1>Fingerprint Verification<br /><span class="gradient-text">via Deep Metric Learning</span></h1>
+      <p class="hero-sub">A complete biometric pipeline — from raw BMP pixels to 128-D embeddings — evaluated across 10 model-preprocessing combinations with FAR, FRR, and EER metrics.</p>
+      <div class="hero-stats">
+        <div class="stat-card"><div class="stat-num">0.145%</div><div class="stat-label">Best EER</div></div>
+        <div class="stat-card"><div class="stat-num">99.85%</div><div class="stat-label">Best Accuracy</div></div>
+        <div class="stat-card"><div class="stat-num">55,270</div><div class="stat-label">Fingerprints</div></div>
+        <div class="stat-card"><div class="stat-num">10</div><div class="stat-label">Experiments</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FLOW MAP ── -->
+  <section class="section" id="flowmap">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Architecture</div>
+        <h2>Complete Pipeline Flow Map</h2>
+        <p>High-Level Design (HLD) + Low-Level Design (LLD) — every stage from raw data to evaluation</p>
+      </div>
+      <div class="flow-map" id="flow-map-container"></div>
+    </div>
+  </section>
+
+  <!-- ── INTERACTIVE DEMO ── -->
+  <section class="section section-dark" id="demo">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Live Demo</div>
+        <h2>Fingerprint Comparison Demo</h2>
+        <p>Select two fingerprint test cases and see how the system compares them</p>
+      </div>
+      <div class="demo-layout">
+        <div class="demo-selector">
+          <h3>Select Test Case</h3>
+          <div class="test-cases" id="test-cases"></div>
+        </div>
+        <div class="demo-result-panel" id="demo-panel">
+          <div class="demo-fingerprints" id="demo-fingerprints"></div>
+          <div class="demo-analysis" id="demo-analysis"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESULTS TABLE ── -->
+  <section class="section" id="results">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Results</div>
+        <h2>Final 10-Way Experiment Results</h2>
+        <p>All 5 preprocessing variants × 2 model architectures, ranked by Test EER</p>
+      </div>
+      <div class="results-grid" id="results-grid"></div>
+      <div class="comparison-charts">
+        <div class="chart-box" id="chart-eer"></div>
+        <div class="chart-box" id="chart-aug"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPLAINER ── -->
+  <section class="section section-dark" id="explainer">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Deep Dive</div>
+        <h2>Understanding the System</h2>
+        <p>Dataset structure, model differences, metric definitions — all explained</p>
+      </div>
+      <div class="explainer-grid" id="explainer-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── MODEL DIFF ── -->
+  <section class="section" id="model-diff">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Model Comparison</div>
+        <h2>compact_siamese vs mobile_triplet</h2>
+        <p>Layer-by-layer architecture comparison and performance delta</p>
+      </div>
+      <div class="model-diff-layout">
+        <div class="model-card" id="mc-siamese"></div>
+        <div class="vs-badge">VS</div>
+        <div class="model-card" id="mc-triplet"></div>
+      </div>
+      <div class="diff-table-wrap">
+        <table class="diff-table" id="diff-table"></table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Fingerprint Verification Pipeline · SOCOFing Dataset · Deep Metric Learning</p>
+    <p class="footer-sub">compact_siamese Best EER: <strong>0.00145</strong> · compact_siamese Best Accuracy: <strong>99.85%</strong></p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

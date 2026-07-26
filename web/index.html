@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fingerprint Verification System — Demo</title>
+  <meta name="description" content="Interactive demo of a fingerprint biometric verification pipeline using deep metric learning on the SOCOFing dataset." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ── NAV ── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="brand-icon">🔍</span>
+        <span>FingerprintVerify</span>
+      </div>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#flowmap">Flow Map</a>
+        <a href="#demo">Demo</a>
+        <a href="#results">Results</a>
+        <a href="#explainer">Explainer</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="overview">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">SOCOFing Dataset · 55,270 Records</div>
+      <h1>Fingerprint Verification<br /><span class="gradient-text">via Deep Metric Learning</span></h1>
+      <p class="hero-sub">A complete biometric pipeline — from raw BMP pixels to 128-D embeddings — evaluated across 10 model-preprocessing combinations with FAR, FRR, and EER metrics.</p>
+      <div class="hero-stats">
+        <div class="stat-card"><div class="stat-num">0.145%</div><div class="stat-label">Best EER</div></div>
+        <div class="stat-card"><div class="stat-num">99.85%</div><div class="stat-label">Best Accuracy</div></div>
+        <div class="stat-card"><div class="stat-num">55,270</div><div class="stat-label">Fingerprints</div></div>
+        <div class="stat-card"><div class="stat-num">10</div><div class="stat-label">Experiments</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FLOW MAP ── -->
+  <section class="section" id="flowmap">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Architecture</div>
+        <h2>Complete Pipeline Flow Map</h2>
+        <p>High-Level Design (HLD) + Low-Level Design (LLD) — every stage from raw data to evaluation</p>
+      </div>
+      <div class="flow-map" id="flow-map-container"></div>
+    </div>
+  </section>
+
+  <!-- SVG filters for real-time visualization of preprocessing states -->
+  <svg style="position: absolute; width: 0; height: 0;" width="0" height="0">
+    <filter id="svg-gabor">
+      <feConvolveMatrix order="3" kernelMatrix="1 -2 1 -2 5 -2 1 -2 1" targetX="1" targetY="1"/>
+      <feColorMatrix type="matrix" values="
+        3 0 0 0 -0.5
+        0 3 0 0 -0.5
+        0 0 3 0 -0.5
+        0 0 0 10 -4
+      "/>
+    </filter>
+    <filter id="svg-skeleton">
+      <feColorMatrix type="matrix" values="
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0.33 0.33 0.33 0 0
+        0    0    0    30 -15
+      "/>
+      <feMorphology operator="erode" radius="1"/>
+    </filter>
+  </svg>
+
+  <!-- ── INTERACTIVE DEMO ── -->
+  <section class="section section-dark" id="demo">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Live Demo</div>
+        <h2>Fingerprint Comparison Demo</h2>
+        <p>Select test cases, upload custom files, choose models and preprocessing levels, and see dynamic metric learning evaluations.</p>
+      </div>
+      <div class="demo-layout">
+        <div class="demo-selector">
+          <h3>Select Test Case</h3>
+          <div class="test-cases" id="test-cases"></div>
+        </div>
+        <div class="demo-result-panel" id="demo-panel">
+          <!-- Model and Preprocessing Selectors -->
+          <div class="demo-controls">
+            <div class="control-group">
+              <label for="model-select">Biometric Model</label>
+              <select id="model-select">
+                <option value="compact_siamese" selected>compact_siamese (Contrastive Loss, ~118K params)</option>
+                <option value="mobile_triplet">mobile_triplet (Triplet Loss, ~31K params)</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label for="preprocess-select">Preprocessing Level</label>
+              <select id="preprocess-select">
+                <option value="raw" selected>Raw Images (Standard)</option>
+                <option value="normalized">Normalized Intensity</option>
+                <option value="segmented">Segmented Foreground</option>
+                <option value="gabor">Gabor Enhanced Ridges</option>
+                <option value="skeleton">Skeletonized Thin Ridges</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Sandbox Slot Comparison -->
+          <div class="demo-fingerprints" id="demo-fingerprints">
+            <!-- Slot A -->
+            <div class="fp-slot" id="slot-a">
+              <div class="fp-visual" id="dropzone-a">
+                <canvas id="canvas-a" style="display: none;"></canvas>
+                <img id="img-a" class="fp-image" src="" alt="Fingerprint A" />
+                <div class="upload-overlay">
+                  <span class="upload-icon">📤</span>
+                  <span class="upload-text">Drop or Click</span>
+                </div>
+              </div>
+              <input type="file" id="file-a" accept="image/*" style="display:none" />
+              <div class="fp-label" id="label-a">Fingerprint A</div>
+              <div class="fp-meta" id="meta-a">REAL scan</div>
+              <div class="fp-meta" id="meta-sub-a" style="color:var(--text-muted)">Source: real</div>
+            </div>
+            
+            <!-- Distance Indicator -->
+            <div class="vs-divider">
+              <div id="demo-distance-val" style="margin-bottom:0.4rem; font-family:var(--mono); font-weight:800;">0.152</div>
+              <div class="dist-arrow"></div>
+              <div style="margin-top:0.4rem;font-size:0.7rem;color:var(--text-muted)">L2 distance</div>
+            </div>
+            
+            <!-- Slot B -->
+            <div class="fp-slot" id="slot-b">
+              <div class="fp-visual" id="dropzone-b">
+                <canvas id="canvas-b" style="display: none;"></canvas>
+                <img id="img-b" class="fp-image" src="" alt="Fingerprint B" />
+                <div class="upload-overlay">
+                  <span class="upload-icon">📤</span>
+                  <span class="upload-text">Drop or Click</span>
+                </div>
+              </div>
+              <input type="file" id="file-b" accept="image/*" style="display:none" />
+              <div class="fp-label" id="label-b">Fingerprint B</div>
+              <div class="fp-meta" id="meta-b">Easy altered</div>
+              <div class="fp-meta" id="meta-sub-b" style="color:var(--text-muted)">Source: altered</div>
+            </div>
+          </div>
+
+          <div class="demo-analysis" id="demo-analysis"></div>
+        </div>
+      </div>
+
+      <!-- Test Prints Catalog -->
+      <div class="test-prints-catalog">
+        <h4>Test Prints Catalog (SOCOFing Files in Web Folder)</h4>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">
+          Click a print's <strong>A</strong> or <strong>B</strong> button to load it into Slot A or Slot B. You can also drag-and-drop any fingerprint PNG file from your computer directly onto either slot, or click the slots to upload!
+        </p>
+        <div class="catalog-grid" id="catalog-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESULTS TABLE ── -->
+  <section class="section" id="results">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Results</div>
+        <h2>Final 10-Way Experiment Results</h2>
+        <p>All 5 preprocessing variants × 2 model architectures, ranked by Test EER</p>
+      </div>
+      <div class="results-grid" id="results-grid"></div>
+      <div class="comparison-charts">
+        <div class="chart-box" id="chart-eer"></div>
+        <div class="chart-box" id="chart-aug"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPLAINER ── -->
+  <section class="section section-dark" id="explainer">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Deep Dive</div>
+        <h2>Understanding the System</h2>
+        <p>Dataset structure, model differences, metric definitions — all explained</p>
+      </div>
+      <div class="explainer-grid" id="explainer-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── MODEL DIFF ── -->
+  <section class="section" id="model-diff">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Model Comparison</div>
+        <h2>compact_siamese vs mobile_triplet</h2>
+        <p>Layer-by-layer architecture comparison and performance delta</p>
+      </div>
+      <div class="model-diff-layout">
+        <div class="model-card" id="mc-siamese"></div>
+        <div class="vs-badge">VS</div>
+        <div class="model-card" id="mc-triplet"></div>
+      </div>
+      <div class="diff-table-wrap">
+        <table class="diff-table" id="diff-table"></table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Fingerprint Verification Pipeline · SOCOFing Dataset · Deep Metric Learning</p>
+    <p class="footer-sub">compact_siamese Best EER: <strong>0.00145</strong> · compact_siamese Best Accuracy: <strong>99.85%</strong></p>
+  </footer>
+
+  <script src="embeddings.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
